@@ -21,7 +21,16 @@ const News = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [category]);
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const updateCategory = (category) => {
+    setCategory(category);
+    fetchData();
+  };
 
   const fetchMoreData = async () => {
     if (articles.length <= totalArticles) {
@@ -38,8 +47,89 @@ const News = () => {
 
   return (
     <div className="container">
-      <p className="text-center newsPageHeading">Nexus News</p>
-      <h5 className="text-center">Latest Headlines Of Specific categories</h5>
+      <div className="d-flex">
+        <div className="dropdown ms-4">
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Caterogies
+          </button>
+          <ul className="dropdown-menu">
+            <li
+              onClick={() => {
+                updateCategory("business");
+              }}
+            >
+              <a className="dropdown-item" href="#">
+                Business
+              </a>
+            </li>
+            <li
+              onClick={() => {
+                updateCategory("entertainment");
+              }}
+            >
+              <a className="dropdown-item" href="#">
+                Entertainment
+              </a>
+            </li>
+            <li
+              onClick={() => {
+                updateCategory("general");
+              }}
+            >
+              <a className="dropdown-item" href="#">
+                General
+              </a>
+            </li>
+            <li
+              onClick={() => {
+                updateCategory("health");
+              }}
+            >
+              <a className="dropdown-item" href="#">
+                Health
+              </a>
+            </li>
+            <li
+              onClick={() => {
+                updateCategory("science");
+              }}
+            >
+              <a className="dropdown-item" href="#">
+                Science
+              </a>
+            </li>
+            <li
+              onClick={() => {
+                updateCategory("sports");
+              }}
+            >
+              <a className="dropdown-item" href="#">
+                Sports
+              </a>
+            </li>
+            <li
+              onClick={() => {
+                updateCategory("technology");
+              }}
+            >
+              <a className="dropdown-item" href="#">
+                Technology
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="w-80">
+          <p className="text-center newsPageHeading">Nexus News</p>
+          <h5 className="text-center mb-4">
+            Latest Headlines Of {capitalizeFirstLetter(category)} category
+          </h5>
+        </div>
+      </div>
       <InfiniteScroll
         dataLength={articles.length}
         next={fetchMoreData}
@@ -49,7 +139,11 @@ const News = () => {
             <img src={Loading} width="40px" alt="" />
           </div>
         }
-        endMessage={<h5 className="text-center my-4">No more articles</h5>}
+        endMessage={
+          <h5 className="text-center my-4">
+            You have reached the end of the page
+          </h5>
+        }
       >
         <div className="row d-flex align-items-start">
           {articles.map((article, i) => {

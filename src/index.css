@@ -4,9 +4,20 @@
 }
 
 .start-100 {
-  left: 85% !important;
+  left: 75% !important;
+  z-index: 1;
 }
 
 .infinite-scroll-component {
   padding: 0 12px;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
