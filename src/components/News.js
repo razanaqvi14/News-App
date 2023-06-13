@@ -3,7 +3,7 @@ import NewsItem from "./NewsItem";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../assets/loading.gif";
 
-const News = () => {
+const News = (props) => {
   const [country, setCountry] = useState("us");
   const [category, setCategory] = useState("technology");
   const [page, setPage] = useState(1);
@@ -12,7 +12,7 @@ const News = () => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchData = async () => {
-    const apiURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&apiKey=5e8603c7a4d9464a817e8d73e79ad3ce`;
+    const apiURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&apiKey=${props.apiKey}`;
     const response = await fetch(apiURL);
     const data = await response.json();
     setArticles(data.articles);
@@ -35,7 +35,7 @@ const News = () => {
   const fetchMoreData = async () => {
     if (articles.length <= totalArticles) {
       setPage(page + 1);
-      const apiURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&apiKey=5e8603c7a4d9464a817e8d73e79ad3ce`;
+      const apiURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&apiKey=${props.apiKey}`;
       const response = await fetch(apiURL);
       const data = await response.json();
       setArticles(articles.concat(data.articles));
