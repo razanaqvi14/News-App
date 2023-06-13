@@ -2,9 +2,11 @@
   font-size: 65px;
   font-weight: 400;
 }
-.newsPageSubHeading {
-  font-weight: 400;
-}
+
 .start-100 {
   left: 85% !important;
+}
+
+.infinite-scroll-component {
+  padding: 0 12px;
 }
