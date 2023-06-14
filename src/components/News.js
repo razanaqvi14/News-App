@@ -37,9 +37,11 @@ const News = (props) => {
   };
 
   const fetchMoreData = async () => {
-    if (articles.length <= totalArticles) {
+    if (articles.length !== totalArticles) {
+      const apiURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${
+        page + 1
+      }&apiKey=${props.apiKey}`;
       setPage(page + 1);
-      const apiURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&apiKey=${props.apiKey}`;
       const response = await fetch(apiURL);
       const data = await response.json();
       setArticles(articles.concat(data.articles));

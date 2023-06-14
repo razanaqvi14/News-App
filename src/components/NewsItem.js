@@ -8,7 +8,7 @@ const NewsItem = (props) => {
       </span>
       <img
         src={
-          props.URLToImage
+          props.URLToImage !== null
             ? props.URLToImage
             : "https://pbs.twimg.com/profile_images/1108430392267280389/ufmFwzIn_400x400.png"
         }
