@@ -12,11 +12,15 @@ const News = (props) => {
   const [hasMore, setHasMore] = useState(true);
 
   const fetchData = async () => {
+    props.updateProgress(30);
     const apiURL = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&page=${page}&apiKey=${props.apiKey}`;
     const response = await fetch(apiURL);
+    props.updateProgress(50);
     const data = await response.json();
+    props.updateProgress(80);
     setArticles(data.articles);
     setTotalArticles(data.totalResults);
+    props.updateProgress(100);
   };
 
   useEffect(() => {
@@ -126,7 +130,7 @@ const News = (props) => {
         <div className="w-80">
           <p className="text-center newsPageHeading">Nexus News</p>
           <h5 className="text-center mb-4">
-            Latest Headlines Of {capitalizeFirstLetter(category)} category
+            Latest Headlines On {capitalizeFirstLetter(category)}
           </h5>
         </div>
       </div>

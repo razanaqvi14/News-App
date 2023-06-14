@@ -6,7 +6,15 @@ const NewsItem = (props) => {
       <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
         {props.name}
       </span>
-      <img src={props.URLToImage} className="card-img-top" alt="..." />
+      <img
+        src={
+          props.URLToImage
+            ? props.URLToImage
+            : "https://pbs.twimg.com/profile_images/1108430392267280389/ufmFwzIn_400x400.png"
+        }
+        className="card-img-top"
+        alt="..."
+      />
       <div className="card-body d-flex flex-column justify-content-center">
         <h5 className="card-title">{props.title}</h5>
         <p className="fw-light">{Date(props.publishedAt)}</p>
