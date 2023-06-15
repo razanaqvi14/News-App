@@ -20,6 +20,7 @@ const News = (props) => {
     props.updateProgress(80);
     setArticles(data.articles);
     setTotalArticles(data.totalResults);
+    document.title = `NexusNews | ${capitalizeFirstLetter(category)}`;
     props.updateProgress(100);
   };
 

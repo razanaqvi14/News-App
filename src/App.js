@@ -1,5 +1,4 @@
 import Navbar from "./components/Navbar";
-import About from "./components/About";
 import News from "./components/News";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
@@ -25,7 +24,6 @@ const App = () => {
           exact
           element={<News apiKey={apiKey} updateProgress={updateProgress} />}
         />
-        <Route path="/about" exact element={<About />} />
       </Routes>
     </BrowserRouter>
   );
