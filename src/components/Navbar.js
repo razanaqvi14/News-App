@@ -1,13 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <nav className="navbar sticky-top navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
+        <a className="navbar-brand" href="/">
           NexusNews
-        </Link>
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,9 +21,9 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className="nav-link" aria-current="page" to="/">
+              <a className="nav-link" aria-current="page" href="/">
                 Home
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

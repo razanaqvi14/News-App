@@ -1,6 +1,5 @@
 import Navbar from "./components/Navbar";
 import News from "./components/News";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { useState } from "react";
 import LoadingBar from "react-top-loading-bar";
 
@@ -11,21 +10,15 @@ const App = () => {
     setProgress(progress);
   };
   return (
-    <BrowserRouter>
+    <>
       <LoadingBar
         color="#0d6efd"
         progress={progress}
         onLoaderFinished={() => setProgress(0)}
       />
       <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          exact
-          element={<News apiKey={apiKey} updateProgress={updateProgress} />}
-        />
-      </Routes>
-    </BrowserRouter>
+      <News apiKey={apiKey} updateProgress={updateProgress} />
+    </>
   );
 };
 
